@@ -16,12 +16,12 @@ const ProductDetail = () => {
     useEffect(() => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
     }, [items])
-    const addtoCart = (id, productName, price, img) => {
+    const addtoCart = (id, productName, price, img, quantity="") => {
         if (JSON.parse(localStorage.getItem(STORAGE_KEY)) === null || undefined) {
-            setItems([{ id, productName, price, img }])
+            setItems([{ id, productName, price, img, quantity }])
             window.location.reload();
         } else
-            setItems([...items, { id, productName, price, img }])
+            setItems([...items, { id, productName, price, img, quantity }])
         window.location.reload();
     }
 
@@ -43,7 +43,7 @@ const ProductDetail = () => {
                     <h4 className='mt-4'>Product ID: #{product.id}</h4>
                     <hr />
                     <h2 className='my-5'>Price {product.price}</h2>
-                    <Button className='btn-add px-5' onClick={() => addtoCart(product.id, product.productName, product.price, product.img)}>Add to Cart</Button>
+                    <Button className='btn-add px-5' onClick={() => addtoCart(product.id, product.productName, product.price, product.img, product.quantity)}>Add to Cart</Button>
                     <Button className='btn-add px-5 ms-3'>Buy now</Button>
                 </Col>
             </Row>) : (null)}

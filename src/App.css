@@ -44,3 +44,7 @@ color: aqua !important;
 .red{
   color: red;
 }
+.border-order{
+  border: 1px solid grey;
+  border-radius: 1rem;
+}

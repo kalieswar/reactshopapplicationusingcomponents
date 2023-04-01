@@ -3,19 +3,19 @@
     {
       "id": "12345",
       "productName": "Chair1",
-      "price": "$100",
+      "price": "100",
       "img":"/images/img-1.png"
     },
     {
       "id": "23456",
       "productName": "Chair2",
-      "price": "$100",
+      "price": "100",
       "img":"/images/img-2.png"
     },
     {
       "id": "34567",
       "productName": "Chair3",
-      "price": "$100",
+      "price": "100",
       "img":"/images/img-3.png"
     }]
 }

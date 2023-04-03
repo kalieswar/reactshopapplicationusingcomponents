@@ -45,7 +45,7 @@ function Product() {
 
         {products && products.map((product) => (
           <Col lg="4" sm="12" md="6">
-            <Card style={{ width: '15rem' }} key={product.id} >
+            <Card style={{ width: '15rem' }} key={product} >
               <Card.Img variant="top" src={product.img} onClick={()=>handleClick(product.id)} className='p-5 imgs' />
               <Card.Body>
                 <Card.Title className='text-center'>{product.productName}</Card.Title>

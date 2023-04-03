@@ -53,7 +53,7 @@ function Cart() {
                     {cartItems.length === 0 ? <h2 className='py-5'>Your Cart is empty</h2>
                      :
                     <Fragment>
-                        <h2>You cart : {cartItems.length} items</h2>
+                        <h2 className='mt-5'>You cart : {cartItems.length} items</h2>
 
                     <Row >
                         <Col xs="12" lg="12">

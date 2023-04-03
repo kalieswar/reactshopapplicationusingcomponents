@@ -23,7 +23,7 @@ const Address = () => {
             !shippingInfo.postalCode||
             !shippingInfo.phone){
                 alert("Pls fill all the details")
-            }else navigate("/orderdetails")
+            }else {navigate("/orderdetails")}
     }
 
     const handleChange = (e)=>{
@@ -33,7 +33,7 @@ const Address = () => {
 
   return (
     <Container>
-        <Row>
+        <Row className='justify-content-center'>
             <Col xs={10} lg={5} className='paddingg'>
                 <form onSubmit={submitHandler} className='shadow-lg p-4'>
                     <h1>Shipping Info</h1> 
@@ -99,4 +99,4 @@ const Address = () => {
   )
 }
 
-export default Address
+export default Address;

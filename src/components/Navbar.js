@@ -18,10 +18,10 @@ function Navbars(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto bgc">
-            <NavLink to='/' activeClassName="red" className='text-white nvlinks nav-link'>Home</NavLink>
+            <NavLink to='/' className='text-white nvlinks nav-link'>Home</NavLink>
             {emailSuccess && passwordSuccess ? (<Link to='/'className='text-white nvlinks nav-link' onClick={handleClick}>Logout</Link>
              ) :
-            (<NavLink to='/' activeClassName="red"className='text-white nvlinks nav-link'>Login</NavLink>)}
+            (<NavLink to='/' className='text-white nvlinks nav-link'>Login</NavLink>)}
             <NavLink to='/cart' className='text-white nvlinks nav-link'>Cart({cartCount.length? cartCount.length : 0})</NavLink>
           </Nav>
         </Navbar.Collapse>

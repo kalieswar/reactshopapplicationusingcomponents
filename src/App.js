@@ -8,6 +8,8 @@ import { Login } from './components/Login';
 import ProtectedRoute from './components/route/ProtectedRoute';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
+import Address from './components/Address';
+import OrderDetails from './components/OrderDetails';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path='/product/:id' element={<ProductDetail/>}/>
         <Route path='/cart'element={<Cart/>}/>
         <Route path='/' element={<Login/>}/>
+        <Route path="/shipping" element={<Address/>}/>
+        <Route path='/orderdetails' element={<OrderDetails/>}/>
         <Route path='*' element={<Error/>}/>
       </Routes>
 

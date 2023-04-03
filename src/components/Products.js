@@ -17,12 +17,14 @@ function Product() {
   useEffect(()=>{
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
   },[items] )
-  const addtoCart =(id,productName,price,img, quantity="")=>{
-    if(JSON.parse(localStorage.getItem(STORAGE_KEY)) === null || undefined){
-        setItems([{id,productName,price,img,quantity}])
-        window.location.reload();
-    }else
-    setItems([...items, {id, productName,price,img,quantity}])
+  const addtoCart =(id,productName,price,img, quantity="1")=>{
+    const existingitem = items.find(item => item.id === id)
+    if(existingitem){
+        existingitem.quantity += parseInt(quantity)
+        setItems([...items])
+    }else{
+    setItems([...items, {id, productName,price,img,quantity: parseInt(quantity)}])
+    }
     window.location.reload();
 }
   useEffect(() => {

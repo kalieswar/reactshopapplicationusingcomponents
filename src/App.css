@@ -48,3 +48,15 @@ color: aqua !important;
   border: 1px solid grey;
   border-radius: 1rem;
 }
+.paddingg{
+  display: flex;
+  justify-content: center ;
+  align-items: center ;
+  margin-top: 5rem !important;
+  font-weight: 700;
+}
+.stockCounter input {
+  border: none;
+  width: 4 rem;
+  text-align: center;
+}

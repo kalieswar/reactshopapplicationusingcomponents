@@ -2,9 +2,12 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Container } from 'react-bootstrap';
 import { Col, Row } from 'react-bootstrap';
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from 'react-router';
+import Table from 'react-bootstrap/Table';
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem("cart-items")) || [];
@@ -40,17 +43,20 @@ function Cart() {
         setCartItems(updatedItems);
         localStorage.setItem("cart-items", JSON.stringify(updatedItems));
     }
-
+    const checkOutHandler =()=>{
+        navigate("/shipping")
+    }
     return (
         <div>
             <Container>
                 <Fragment>
-                    {cartItems.length === 0 ? <h2 className='py-5'>Your Cart is empty</h2> :
+                    {cartItems.length === 0 ? <h2 className='py-5'>Your Cart is empty</h2>
+                     :
                     <Fragment>
-                        <h2>You cart:{cartItems.length} items</h2>
+                        <h2>You cart : {cartItems.length} items</h2>
 
                     <Row >
-                        <Col xs="12" lg="8">
+                        <Col xs="12" lg="12">
                             <hr />
                             {cartItems && cartItems.map((item, index) => (
                                 <Row className='py-3' key={index}>
@@ -61,9 +67,9 @@ function Cart() {
                                         <h4>{item.productName}</h4>
                                     </Col>
                                     <Col xs="3" lg="3">
-                                        <h4>Price: {item.price}</h4>
+                                        <h4>Price: $ {item.price}</h4>
                                     </Col>
-                                    <Col xs="2" lg="3">
+                                    <Col xs="2" lg="3" className='stockCounter'>
                                         <span className='btn btn-danger' onClick={() => decreaseItemQuantity(item.id)}>-</span>
                                         <input type='number' className='form-control count d-inline' value={item.quantity} readOnly />
                                         <span className='btn btn-primary' onClick={() => increaseItemQuantity(item.id)}>+</span>
@@ -73,15 +79,42 @@ function Cart() {
                                     </Col>
                                 </Row>))}
                         </Col>
-                        <Col xs={12} lg={3} className='my-4'>
-                            <div className='border-order'>
-                                <h2 className='p-3'>Order Summary</h2>
-                                <hr />
-                                <h3 className='p-4'>Subtotal: <span>{cartItems.reduce((acc,item)=>(acc+item.quantity),0)}Units</span></h3>
-                                <h3 className='p-4'>Est. Total Price:<span>${cartItems.reduce((acc,item)=>(acc+item.quantity*item.price),0)}</span></h3>
-                                <hr />
-                                <button className='btn btn-primary'>Check Out</button>
-                            </div>
+                        <Col xs={12} lg={12} className='my-4'>
+                            <Table striped bordered hover size="lg">
+                                <thead>
+                                    <tr>
+                                        <th colSpan={4} className='text-center'>Order Summary</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Actual Price</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                {cartItems && cartItems.map((item)=>(
+                                <tbody>
+                                    <tr>
+                                        <td>{item.productName}</td>
+                                        <td>{item.quantity} item(s)</td>
+                                        <td>$ {item.price}</td>
+                                        <td>$ {item.quantity * item.price}</td>
+                                    </tr>
+                                </tbody>))}
+                                <tbody>
+                                    <tr>
+                                        <td colSpan={3} className='text-center'>Grant Total Price</td>
+                                    <td>$ {cartItems.reduce((acc, item)=>(acc+item.quantity * item.price),0)}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td colSpan={4} className='text-center'>
+                                        <button className='btn btn-primary'style={{width:"100%"}} onClick={checkOutHandler}>Check Out</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
                         </Col>
                     </Row>
                     </Fragment>}

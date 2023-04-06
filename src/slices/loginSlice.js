@@ -3,48 +3,42 @@ import {createSlice} from "@reduxjs/toolkit";
 const loginSlice = createSlice({
     name: 'login',
     initialState:{
-        emailError: false,
-        passwordError:false,
+        loading:true,
         isAuthenticated:false,
     },
     reducers:{
-        loginEmailFail(state, action){
+        loginRequest(state, action){
             return{
                 ...state,
-                emailError: true,
-                emailErrorMsg:action.payload
+                loading: true,
             }
         },
-        loginEmailSuccess(state, action){
+        loginSuccess(state, action){
             return{
-                ...state,
-                emailError:false,
-                emailErrorMsg:'',
-                emailSuccess:true,
-                isAuthenticated:true
+                loading: false, 
+                isAuthenticated: true,
+                user: action.payload
             }
         },
-        loginPasswordFail(state, action){
+        loginFail(state, action){
             return{
                 ...state,
-                passwordError: true,
-                passwordErrorMsg: action.payload
+                loading: false,
+                error: action.payload
             }
         },
-        loginPasswordSuccess(state, action){
+        logOut(state, action) {
             return{
-                ...state,
-                passwordError: false,
-                passwordErrorMsg: "",
-                passwordSuccess:true,
-                isAuthenticated:true
+            loading: false,
+            isAuthenticated: false
             }
-        }
+
+          }
     }
 });
 
 const { actions, reducer} = loginSlice;
 
-export const{loginEmailFail,loginEmailSuccess,loginPasswordFail,loginPasswordSuccess,loginSuccess}= actions;
+export const{loginRequest,loginSuccess,loginFail, logOut, clearError}= actions;
 
 export default reducer;

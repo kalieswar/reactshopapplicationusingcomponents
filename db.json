@@ -4,18 +4,45 @@
       "id": "12345",
       "productName": "Chair1",
       "price": "100",
-      "img":"/images/img-1.png"
+      "img": "/images/img-1.png"
     },
     {
       "id": "23456",
       "productName": "Chair2",
       "price": "100",
-      "img":"/images/img-2.png"
+      "img": "/images/img-2.png"
     },
     {
       "id": "34567",
       "productName": "Chair3",
       "price": "100",
-      "img":"/images/img-3.png"
-    }]
+      "img": "/images/img-3.png"
+    }
+  ],
+  "users": [
+    {
+      "id": "876543",
+      "name": "kalieswar",
+      "email": "kalies@gmail.com",
+      "password": "@Kalies2000",
+      "ProfilePic":"/images/new1.jpg",
+      "CreatedAt":"05/04/2023"
+    },
+    {
+      "id": "896754",
+      "name": "kalies",
+      "email": "kalies2@gmail.com",
+      "password": "@Bhuvan2000",
+      "ProfilePic":"/images/img-1.png",
+      "CreatedAt":"05/04/2023"
+    },
+    {
+      "id": "YuC59qT",
+      "name": "test",
+      "email": "test@gmail.com",
+      "password": "test1234",
+      "ProfilePic":"/images/new.webp",
+      "CreatedAt":"05/04/2023"
+    }
+  ]
 }

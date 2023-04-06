@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container,Row,Col } from 'react-bootstrap'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router';
+import { Snackbar, Alert } from '@mui/material';
 
 const Address = () => {
+    const [open,setOpen] = useState(false)
     const navigate = useNavigate()
     const [shippingInfo, setShippingInfo]=useState({
         address:"",
@@ -22,7 +24,7 @@ const Address = () => {
             !shippingInfo.country||
             !shippingInfo.postalCode||
             !shippingInfo.phone){
-                alert("Pls fill all the details")
+                setOpen(true)
             }else {navigate("/orderdetails")}
     }
 
@@ -30,6 +32,17 @@ const Address = () => {
         const{name,value}=e.target;
         setShippingInfo(prevState=>({...prevState,[name]:value}))
     }
+        const handleClose = () => {
+            setOpen(false)
+        }
+    
+    useEffect(() => {
+        if(open) {
+            setTimeout(() => {
+                setOpen(false)
+            }, 3000)
+        }
+    })
 
   return (
     <Container>
@@ -92,6 +105,14 @@ const Address = () => {
                         Continue
                     </button>
                     </div>
+                    <Snackbar open={open} autoHideDuration={1000} anchorOrigin={{
+                  horizontal:'center',
+                  vertical:'top'
+                }}>
+                  <Alert onClose={handleClose}severity="error" sx={{ width: '100%' }}>
+                    Please fill all your details
+                  </Alert>
+                </Snackbar>
                 </form>
             </Col>
         </Row>

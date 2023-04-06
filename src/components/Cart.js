@@ -50,7 +50,7 @@ function Cart() {
         <div>
             <Container>
                 <Fragment>
-                    {cartItems.length === 0 ? <h2 className='py-5'>Your Cart is empty</h2>
+                    {cartItems.length === 0 ? <h2 className='py-5 my-5'>Your Cart is empty</h2>
                      :
                     <Fragment>
                         <h2 className='mt-5'>You cart : {cartItems.length} items</h2>
@@ -58,8 +58,8 @@ function Cart() {
                     <Row >
                         <Col xs="12" lg="12">
                             <hr />
-                            {cartItems && cartItems.map((item, index) => (
-                                <Row className='py-3' key={index}>
+                            {cartItems && cartItems.map((item) => (
+                                <Row className='py-3' key={item.id}>
                                     <Col xs="3" lg="3">
                                         <img src={item.img} alt={item.productName} height="90" width={115}></img>
                                     </Col>
@@ -93,7 +93,7 @@ function Cart() {
                                     </tr>
                                 </thead>
                                 {cartItems && cartItems.map((item)=>(
-                                <tbody>
+                                <tbody key={item.id}>
                                     <tr>
                                         <td>{item.productName}</td>
                                         <td>{item.quantity} item(s)</td>

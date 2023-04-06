@@ -5,26 +5,30 @@ import Product from './components/Products';
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 import { Error } from './components/Error';
 import { Login } from './components/Login';
-import ProtectedRoute from './components/route/ProtectedRoute';
+// import ProtectedRoute from './components/route/ProtectedRoute';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Address from './components/Address';
 import OrderDetails from './components/OrderDetails';
+import SignUp from './components/SignUp';
+import Profile from './components/Profile';
 
 
 function App() {
   return (
     <div className='app'>
       <Router>
-      <Navbars />
+      <Navbars/>
       <Routes>
-        <Route path='/Home' element={<ProtectedRoute><Product/></ProtectedRoute>}/>
+        <Route path='/Home' element={<Product/>}/>
         <Route path='/product/:id' element={<ProductDetail/>}/>
         <Route path='/cart'element={<Cart/>}/>
         <Route path='/' element={<Login/>}/>
         <Route path="/shipping" element={<Address/>}/>
         <Route path='/orderdetails' element={<OrderDetails/>}/>
         <Route path='*' element={<Error/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
 
       <Footer />

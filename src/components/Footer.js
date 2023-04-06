@@ -6,9 +6,16 @@ import Button from 'react-bootstrap/esm/Button';
 import { TfiTwitterAlt } from "react-icons/tfi";
 import { FaFacebookF,  FaLinkedin } from "react-icons/fa";
 import { AiOutlineInstagram } from "react-icons/ai";
+import { useSelector } from 'react-redux';
+import React,{Fragment} from 'react';
 function Footer() {
+    const {isAuthenticated} = useSelector(state => state.loginState)
   return (
+    <Fragment>
+                {isAuthenticated ?
+        <Fragment>
     <Container fluid className='bg-dark text-light mt-5 py-5'>
+
         <Container className='pt-5'>
         <Row className='g-5'>
         <Col lg="3" md="6">
@@ -93,7 +100,10 @@ function Footer() {
         <Col lg="12"></Col>
       </Row>
         </Container>
+       
     </Container>
+    </Fragment> : null}
+    </Fragment>
   );
 }
 

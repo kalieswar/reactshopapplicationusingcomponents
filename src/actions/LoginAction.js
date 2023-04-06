@@ -1,21 +1,23 @@
-import { loginEmailFail, loginEmailSuccess, loginPasswordFail, loginPasswordSuccess } from "../slices/loginSlice"
+import axios from "axios"
+import { loginRequest, loginSuccess, loginFail } from "../slices/loginSlice";
 
 
-export const login = ({email, password}) => (dispatch)=>{
-    if(!email){
-        const emailErrorMsg = "Email should not be empty"
-        dispatch(loginEmailFail(emailErrorMsg))
-    } else{
-        dispatch(loginEmailSuccess())
-    }
 
-    if(!password){
-        const passwordErrorMsg = "Password must"
-        dispatch(loginPasswordFail(passwordErrorMsg))
-    }else if(password.length > 8){
-        const passwordErrorMsg = "password cannot exceed 8 characters"
-        dispatch(loginPasswordFail(passwordErrorMsg))
-    }else {
-        dispatch(loginPasswordSuccess())
+
+export const login = ({ email, password }) => async (dispatch) => {
+
+    dispatch(loginRequest())
+    const { data } = await axios.get(`http://localhost:3001/users?email=${email}`);
+    if (data[0] === undefined) {
+        alert('Login Failed')
+        dispatch(loginFail())   
+    } else {
+        if (data[0].password === password) {
+            alert('Logged in Successfully')
+            dispatch(loginSuccess(data))
+        } if(data[0].password !== password){
+            alert('Password Wrong')
+            dispatch(loginFail())
+        }
     }
 }

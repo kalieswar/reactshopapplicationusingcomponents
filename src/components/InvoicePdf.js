@@ -1,14 +1,16 @@
-import React, { useState, useEffect , Fragment} from "react";
+import React, { useState, useEffect } from "react";
 import { Page, Document} from "@react-pdf/renderer";
 import ReactDOMServer from "react-dom/server"
 import { Html } from "react-pdf-html";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from "react-redux";
 
 
 const InvoicePdf = () => {
 
     const [cartItems, setCartItems] = useState([]);
     const [add, setAdd] = useState({})
+
 
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem("cart-items")) || [];

@@ -1,10 +1,9 @@
 import { Col, Container, Row } from 'react-bootstrap';
-// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Snackbar, Alert, Stack, Button } from '@mui/material';
+import { Snackbar, Alert,  Button } from '@mui/material';
 import Loading from './plugins/Loading';
 
 function Product() {
@@ -17,6 +16,8 @@ function Product() {
   const [items, setItems] = useState(() => {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
   })
+
+
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
@@ -33,6 +34,8 @@ function Product() {
     setOpen(true)
 
   }
+
+
 
   const handleClose = () => {
     setOpen(false)
@@ -76,6 +79,7 @@ function Product() {
               <Button variant="outlined" className='padbtn mt-2' onClick={() => addtoCart(product.id, product.productName, product.price, product.img, product.quantity)}>
                 Add Cart
               </Button>
+              <Button variant="outlined" className='padbtn mt-2'>Add Cart2</Button>
               <Snackbar open={open} autoHideDuration={1000} anchorOrigin={{
                 horizontal:'center',
                 vertical:'top'

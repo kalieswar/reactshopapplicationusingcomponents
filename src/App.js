@@ -12,6 +12,7 @@ import Address from './components/Address';
 import OrderDetails from './components/OrderDetails';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
+import SavedAdd from './components/SavedAdd';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='*' element={<Error/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/savedaddress' element={<SavedAdd/>}/>
       </Routes>
 
       <Footer />
